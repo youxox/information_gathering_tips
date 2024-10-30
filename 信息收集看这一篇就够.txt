@@ -1,0 +1,244 @@
+信息收集打点tip
+
+信息收集流程: 子域名 -> 端口 -> 框架 -> 目录 -> APP -> 小程序 -> 公众号
+子域名收集: Subfinder+OneForAll+FoFa+Hunter+ARL灯塔
+Fofa测绘: domain="xxx.com"&&header=200&&is_domain="true"	host="xxx.com"	
+&&(title="管理员" || title="忘记密码" || title="后台登录" || body="注册用户")
+有些资产可能fofa搜集不到需要在主站多看看F12
+扫描端口: Goon https://github.com/i11us0ry/goon 不过该工具目前已停止维护
+打不到就找APP,小程序. 公众号是否有敏感信息
+企业信息 -> 软件著作权找软件 -> 配合FOFA,Hunter 搜资产
+
+姿势一: Oneforall Subfinder ARL灯塔 -> 域名去重 ->对域名 Ehole Httpx 指纹识别
+对IP -> goon Kscan
+——————————————————————————————————————————————————————————————————————————————————————
+[小程序信息收集] 
+来源隐雾SRC第三期
+  |_*小蓝本(小程序,搜企业关系,网站)
+  |  1.从集团出发
+  |  2.从子公司出发
+  |  如何选择?  大的子公司:1,2 都要走  小的子公司: 1
+  |  集团 + 大的子公司
+  |
+  |_*微信搜索:
+  |    多次关键字匹配
+  |    |_百度
+  |    |_北京百度网讯科技有限公司
+  |    |_北京百度
+  |    |_百度网讯科技有限公司
+  |    |_百度网讯
+  |
+  |_*企查查
+  |
+  |_零零信安
+     |_搜企业
+        |_移动端应用
+           |_类型
+              |_微信公众号,安卓APK,微信小程序,微信公众号(含小程序)
+
+    #把能搜集到的小程序都搞出来
+  阿拉丁搜小程序 https://aldzs.com
+  七麦数据 https://qimai.cn
+——————————————————————————————————————————————————————————————————————————————————————
+[子公司信息收集]
+小蓝本 https://xiaolanben.com
+  |_搜索框输搜SRC的主名字, 如:百度
+     |_点击百度后可查看所属集团
+        |_点击集团后,收集子公司信息
+______________________________________________________________________________________
+[备案搜资产]
+Hunter:
+  icp.number="京ICP备16020626号-8"   搜通过域名关联ICP备案号为"京...-8"的网站资产
+  icp.web="奇安信"                   搜ICP备案网站名中含有"奇安信"的资产
+  icp.name="奇安信"                  搜ICP备案单位中含有"奇安信"的资产
+  icp.type="企业"                    搜ICP备案主体为"企业"的资产
+  icp.industry="软件和信息技术服务行业"  搜索ICP备案行业为"软件和信息技术服务业"的资产
+
+FOFA:
+  icp="京ICP证030173号"    查找备案号为"京ICP...173号"的网站    搜索网站类型资产
+
+出现 title="Index of /" --> 目录遍历漏洞 --> 捡钱
+______________________________________________________________________________________
+[Github信息收集]
+账号密码/邮箱/代码/使用文档/接口文档/
+filename:database language:java password
+______________________________________________________________________________________
+[其他]
+  系统文档信息收集 帮助手册 指导视频 注册指南(需要关注!!!)
+  例: 指导视频泄露管理员账号密码(高危) --> 进后台测更多功能点
+
+[网盘信息收集]
+  猪猪盘 http://zhuzhupan.com
+  夸克云盘 https://www.cuppaso.fun
+  超能搜 https://www.chaonengsou.com
+______________________________________________________________________________________
+[+]棱角社区: 信息收集的一些姿势 https://forum.ywhack.com/bountytips.php?getinfo
+^牛逼有很多在线工具
+
+域名收集: python3 oneforall.py
+被动域名收集: ./subfinder -d xxx.com -silent
+主动 调用各种api接口: python3 oneforall.py --target xxx.com  run
+端口+漏扫: ./scan4all -list urls.txt -csv -o results.csv
+目录扫描工具语法: dirsearch -l dirsearch/url.txt -r --delay 1 --random-agent -i 200,403
+最后配合goby做上资产+一些高危漏洞
+姿势 http+EHole+packFuzzer
+oneforall配的API越多信息收集能力越强 	 子域 端口 cms框架 目录 
+
+utoools: 方便截图识别文字提取ip插件: https://u.tools
+
+Burp插件伪造ip防止被办
+https://github.com/TheKingOfDuck/burpFakeIP/
+______________________________________________________________________________________
+姿势&常规手法:
+CDN -> 微步X情报社区
+爱企查,企查查,天眼查 -> 企业所有备案域名,微信公众号,小程序,APP
+[小蓝本]能干嘛 微信小程序,子公司,app,子域名,公众号 https://sou.xiaolanben.com/
+备案域名进行资产测绘 -> Fofa Hunter 360Quake 小程序抓包,企业最新域名(ARL监控)
+供应商 网站是否存在 waf 与 防火墙 	xray+rad 漏洞挖掘 goby 资产测绘
+
+##备案查询## (去掉-1)[边缘资产???]
+Hunter icp.number="京ICP证030173号"	Hunter搜ICP备案较好
+Fofa icp="京ICP证030173号"
+
+备案域名 -> IP指向C段 -> 确定是否CDN(微步查询) -> 不是CDN,直接打C段(先确定是否为公司资产)
+
+非常规打发(边缘资产范围)
+非域名形式存在(无法通过备案找到)域名 or ip
+是企业边缘平台(具有相关资产特征) body title js特征
+
+SSL证书 http://crt.sh站点查询
+HTML正文包含ICP备案进行查询: body="浙ICP备01001234号"
+
+
+重点:关键字Fuzz技术 林业,物业,城市,学生,交通管理,智慧平台,校园卡,学院管理
+_________________________________________________________________________________
+1.首先确定打哪个资产,限定资产省份以及城市
+ - 查询语法 region="浙江(Zhejiang)" && title="物业管理"
+2.FOFA去Fuzz搜索
+ - 资产 region="Zhejiang" && body="林业管理"
+ - Sql注入 region="Zhejiang" && body="id=43"
+ - 文件上传 region="Zhejiang" && body="uplaod" && title="XXXX校园管理"
+https://blog.csdn.net/2301_77732591/article/details/131287672
+FOfa状态码过滤:   status_code=200
+________________________________________________________________________________
+[通过证书查找资产] ---> 针对大型企业
+Google浏览器浏览一个企业网站主页 -> 点击地址栏内左侧的按钮有点像设置图标 -> 连接是安全的 -> 证书有效
+ -> 详细信息 -> 证书字段 -> 序列号 -> 复制下方字段值 xx:aa:bb:cc -> 使用在线工具 ->
+访问 https://tool.lu/hexconvert -> 选择16进制 -> 粘贴字段值并去掉":" -> 点击转换 -> 
+复制表格内进制10内容 -> 构造Fofa语句: cert="12342134231412341234"来查询使用该证书的资产
+______________________________________________________________________________________
+[一些信息搜集姿势]
+ * 信息泄露 [Google] site:edu.cn filetype:pdf "身份证"
+ * 1Day [Fofa] title="移动管理平台-企业管理"&&country="CN" (默认账号密码去打)
+ * 寻找注册接口 [Fofa] host="edu.cn"&&"注册"&&country="CN" (登录也可以)(测短信轰炸看看[并发&重放?])
+ * 小程序 微信搜索(关键词增改) 百度 百度集团 北京百度 百度科技有限公司 北京百度网讯科技有限公司
+________________________________________________________________________________________________
+[目录遍历漏洞] site:xxx.com intitle:index.of
+[SQL错误] site:xxx.com intext:"sql syntax near" | intext:"syntax error"
+[phpinfo] site:xxx.com ext:php intitle:phpinfo "published by the PHP"
+[配置文件泄露] site:xxx.com ext:.xml | .conf | .cnf | .reg | .inf | .rdp | .cfg
+[数据库文件泄露] site:xxx.com ext:.sql | .dbf | .mdb | .db
+[日志文件泄露] site:xxx.com ext:.log
+[备份和历史文件泄露] site:xxx.com ext:.bkf | .bkp | .old | .backup | .bak| .swp
+________________________________________________________________________________	
+[指纹识别]
+ * 登录框万能验证码: 登录方式:手机号或邮箱 验证码123456 
+   - 开发人员为了方便测试后期项目上线没有删除
+   - 扩大危害 信息收集老师学生手机号码,泄露身份证,定级中危
+ * 观察响应包是否泄露db(报错)语句,利用布尔型注入检测
+      姿势 
+	1.?id=if(1=1,1165,0) 返回true 
+	2.?id=if((left(databases(),1)='a'),1165,0) 返回false
+____________________________________________________________________________________________
+[一些技巧]
+出现403在github上面找站点的框架的源码,然后拼接路径去看是否做了认证
+/user/info -> 改 -> /user/page /user/page?size=123 --> 查看是否出现泄露
+
+
+
+
+____________________________________________________________________________________________
+爱企查: 查询企业icp备案,子公司,收集app和小程序,开发商版权
+https://aiqicha.baidu.com
+
+企知道: 查询企业icp备案,子公司,收集app和小程序,开发商版权
+https://qiye.qizhidao.com
+
+微步: 查询历史解析
+https://x.threatbook.com
+
+七麦数据: 收集目标APP				小蓝本: 收集目标APP
+https://www.qimai.cn				https://sou.xiaolanben.com
+
+查IP归属
+https://iplark.com/search
+
+
+企业信息		天眼查				https://www.tianyancha.com/
+企业信息		小蓝本				https://www.xiaolanben.com/
+企业信息		爱企查				https://aiqicha.baidu.com/
+企业信息		企查查				https://www.qcc.com/
+企业信息		国外企查				https://opencorporates.com/
+企业信息		启信宝				https://www.qixin.com/
+备案信息		备案信息查询			http://www.beianx.cn/
+备案信息		备案管理系统			https://beian.miit.gov.cn/
+公众号信息	搜狗微信搜索			https://weixin.sogou.com/
+注册域名		域名注册查询			https://buy.cloud.tencent.com/domain
+IP反查		IP反查域名			https://x.threatbook.cn/
+IP反查		IP反查域名			http://dns.bugscaner.com/
+
+DNS数据		dnsdumpster			https://dnsdumpster.com/
+证书查询		CertificateSearch		https://crt.sh/
+网络空间		FOFA				https://fofa.info/
+网络空间		全球鹰				http://hunter.qianxin.com/
+网络空间		360 				https://quake.360.cn/quake/#/index
+威胁情报		微步在线情报社区			https://x.threatbook.cn/
+威胁情报		奇安信威胁情报中心			https://ti.qianxin.com/
+威胁情报		360威胁情报中心			https://ti.360.cn/#/homepage
+枚举解析		在线子域名查询			http://tools.bugscaner.com/subdomain/
+枚举解析		DNSGrep子域名查询			https://www.dnsgrep.cn/subdomain
+枚举解析		强大的子域名收集器			https://github.com/shmilylty/OneForAll
+
+网络空间		钟馗之眼				https://www.zoomeye.org/?R1nG
+网络空间		零零信安				https://0.zone/
+网络空间		Shodan 				https://www.shodan.io/
+网络空间		Censys 				https://censys.io/
+网络空间		ONYPHE				https://www.onyphe.io/
+网络空间		FullHunt			https://fullhunt.io/
+网络空间		Soall Search Engine		https://soall.org/
+网络空间		Netlas				https://app.netlas.io/responses/
+网络空间		Leakix				https://leakix.net/
+网络空间		DorkSearch			https://dorksearch.com/
+
+威胁情报		VirusTotal查杀平台	https://www.virustotal.com/gui/
+威胁情报		VenusEye威胁情报中心	https://www.venuseye.com.cn/
+威胁情报		绿盟科技威胁情报云		https://ti.nsfocus.com/
+威胁情报		IBM 情报中心		https://exchange.xforce.ibmcloud.com/
+威胁情报		天际友盟安全智能平台	https://redqueen.tj-un.com/IntelHome.html
+威胁情报		华为安全中心平台		https://isecurity.huawei.com/sec/web/intelligencePortal.do
+威胁情报		安恒威胁情报中心		https://ti.dbappsecurity.com.cn/
+威胁情报		AlienVault 		https://otx.alienvault.com/
+威胁情报		深信服 			https://sec.sangfor.com.cn/analysis-platform
+威胁情报		丁爸情报分析师工具箱	http://dingba.top/
+威胁情报		听风者情报源start.me	https://start.me/p/X20Apn
+威胁情报		GreyNoiseVisualizer	https://viz.greynoise.io/
+威胁情报		URLhaus数据库		https://urlhaus.abuse.ch/browse/
+威胁情报		Pithus			https://beta.pithus.org/
+
+指纹识别		在线cms指纹识别		http://whatweb.bugscaner.com/look/
+指纹识别		Wappalyzer		https://github.com/AliasIO/wappalyzer
+指纹识别		TideFinger潮汐		http://finger.tidesec.net/
+指纹识别		云悉指纹			https://www.yunsee.cn/
+指纹识别		WhatWeb			https://github.com/urbanadventurer/WhatWeb
+指纹识别		数字观星Finger-P		https://fp.shuziguanxing.com/#/
+
+超级Ping 	http://www.17ce.com/
+超级Ping		https://ping.chinaz.com/
+接口查询 		https://get-site-ip.com/
+接口查询 		https://fofa.info/extensions/source
+国外请求 		https://tools.ipip.net/cdn.php
+国外请求 		https://boce.aliyun.com/detect/
+IP社区库 		https://www.cz88.net/geo-public
+全网扫描 		https://github.com/Tai7sy/fuckcdn
+全网扫描 		https://github.com/boy-hack/w8fuckcdn
+全网扫描		https://github.com/Pluto-123/Bypass_cdn
