@@ -233,11 +233,11 @@ DNS数据		dnsdumpster			https://dnsdumpster.com/
 
 超级Ping 	http://www.17ce.com/
 超级Ping		https://ping.chinaz.com/
-接口查询 		https://get-site-ip.com/
-接口查询 		https://fofa.info/extensions/source
-国外请求 		https://tools.ipip.net/cdn.php
-国外请求 		https://boce.aliyun.com/detect/
-IP社区库 		https://www.cz88.net/geo-public
-全网扫描 		https://github.com/Tai7sy/fuckcdn
-全网扫描 		https://github.com/boy-hack/w8fuckcdn
+接口查询 	https://get-site-ip.com/
+接口查询 	https://fofa.info/extensions/source
+国外请求 	https://tools.ipip.net/cdn.php
+国外请求 	https://boce.aliyun.com/detect/
+IP社区库 	https://www.cz88.net/geo-public
+全网扫描 	https://github.com/Tai7sy/fuckcdn
+全网扫描 	https://github.com/boy-hack/w8fuckcdn
 全网扫描		https://github.com/Pluto-123/Bypass_cdn
